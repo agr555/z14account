@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/adaptive.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeWorks</title>
+</head>
+<body>
+<main class="main">
+    <div class="container">
+        <div class="two-side">
+            <div class="homeWorks">Home<span>W</span>orks</div>
+            <div class="left-side">
+                <div class="left-side-block">
+                    <div class="account-title" id="account-title">Get your free account</div>
+                    <div class="account-text">Try homeWorks BUSINESS free for 15 days. Downgrade to Basic (Free Forever)
+                        anytime.
+                    </div>
+                    <div class="account-form">
+                        <div class="account-form-item" id = "userFullName">
+                            <div class="form-placeholer-text">Full Name</div>
+                            <input type="text" class="form-input" id="form-fullname">
+<!--                            <input type="text" class="form-input" id="form-fullname" value="Antony Swarowski">-->
+                        </div>
+                        <div class="account-form-item">
+                            <div class="form-placeholer-text">Your username</div>
+                            <input type="text" class="form-input" id="form-username">
+                        </div>
+                        <div class="account-form-item" id="userEmail">
+                            <div class="form-placeholer-text">E-mail</div>
+                            <input type="email" class="form-input" id="form-email" pattern="^[A-Za-z0- 9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$"  size="30" required>
+                        </div>
+                        <div class="account-form-item">
+                            <div class="form-placeholer-text">Password</div>
+                            <input type="password" class="form-input" id="form-password" >
+                        </div>
+                        <div class="account-form-item" id="userRepeatPswd">
+                            <div class="form-placeholer-text">Repeat Password</div>
+                            <input type="password" class="form-input" id="form-repeat-pswd" >
+                        </div>
+                        <div class="form-checkbox" id="UserAgree">
+<!--                            <input type="checkbox" name="form_choice" id="form_choice" checked value="true" />-->
+                            <input type="checkbox" name="form_choice" id="form_choice"  value="true" />
+                            <label for="form_choice">Agree to our Terms of Service and Privacy Statement</label>
+                        </div>
+                        <div class="form-sign">
+                            <button class="btn" type="submit" id="form-sign-btn">Sign Up</button>
+                            <div class="form-sign-text" id="userHaveAccount"><a href="#">Already have an account?</a></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="right-side">
+
+                <div class="right-image">
+                    <img src="images/image.png" alt="Spaceship">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="popup-container" id="popup-show">
+        <div class="popup">
+            <div class="popup-text">Спасибо за заказ!!!.</div>
+            <button class="btn popup-btn" type="submit" id="popup-btn">Ok</button>
+        </div>
+    </div>
+</main>
+<script src="/scripts/script.js">
+
+</script>
+</body>
+</html>

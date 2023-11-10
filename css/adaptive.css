@@ -1,0 +1,48 @@
+/* 1024 - 1229 */
+@media screen and (max-width: 1200px) {
+    .container {
+        /*padding-left: 15px;*/
+    }
+    .left-side {
+        max-width: 900px;
+        padding-left: 20px;
+    }
+    .right-side {
+        max-width: 900px;
+    }
+}
+@media screen and (max-width: 900px) {
+
+    .container .two-side {
+        flex-direction: column;
+    }
+    .homeWorks {
+        position: static;
+        left: 0;
+    }
+
+    .left-side {
+        order: 2;
+        padding: 0 20px;
+        width: 100%;
+        justify-content: center;
+    }
+    .right-side {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding-top: 20px;
+    }
+    .right-image {
+        /*display: none;*/
+        width: 200px;
+        padding: 20px;
+       }
+    .account-title {
+        margin-top: 20px;
+    }
+    .account-form-item {
+        width: 100%;
+    }
+}

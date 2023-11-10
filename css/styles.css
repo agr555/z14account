@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: Nunito;
+    src: url("../fonts/Nunitobold.woff");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: NunitoBlack;
+    src: url("../fonts/Nunitoblack.woff");
+    font-style: normal;
+    font-weight: 900;
+}
+
+body {
+    font-family: Nunito, sans-serif;
+}
+
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.homeWorks {
+    z-index: 1;
+    position: absolute;
+    left: calc(50% - 124px);
+    color: #000;
+    font-family: NunitoBlack, sans-serif;;
+    font-size: 36px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 27px;
+}
+
+.homeWorks span {
+    color: #D72F3F;
+    font-size: 48px;
+}
+
+.container .two-side {
+    display: flex;
+    justify-content: stretch ;
+}
+
+.left-side {
+    display: flex;
+    justify-content: right;
+    background-color: #FFFFFB;;
+    width: 960px;
+    padding-right: 41px;
+}
+
+.right-side {
+
+    display: flex;
+    justify-content: left;
+    background-color: #F8F8FA;
+    /*background-color: #15d2d2;*/
+    width: 960px;
+    padding-left: 11px;
+}
+
+.account-title {
+    margin-top: 194px;
+    color: #000;
+    font-family: Nunito, sans-serif;
+    font-size: 36px;
+    margin-bottom: 7px;
+}
+
+.account-text {
+    color: #636363;
+    font-family: Nunito, sans-serif;
+    font-size: 22px;
+    max-width: 496px;
+    margin-bottom: 62px;
+}
+.account-form-item{
+    display: flex;
+    flex-direction: column;
+    width: 452px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+.form-placeholer-text {
+    color: #C6C6C4;
+    font-family: Nunito, sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+}
+.form-input {
+    color: #323232;
+    font-family: Nunito, sans-serif;
+    font-size: 20px;
+    box-sizing: border-box;
+    border: 0;
+    outline: none;
+    border-bottom: 1px solid #C6C6C4;
+    margin-bottom: 20px;
+    background-color: #FFFFFB;
+    line-height: 27px; /* 168.75% */
+    margin: 4px 0;
+}
+
+.form-fullname {
+    margin-top: 25px;
+}
+.form-checkbox{
+    margin: 35px 0 44px;
+}
+.form-checkbox label{
+    color: #636363;
+    font-size: 16px;
+    line-height: 27px;
+    margin-left: 10px;
+}
+.form-sign{
+    text-align: center;
+    margin: 40px 0 191px;
+}
+.form-sign .btn, .popup-container .btn{
+    color: #FFF;
+    font-size: 20px;
+    width: 210px;
+    height: 70px;
+    border-radius: 40px;
+    background: #DD3142;
+    box-sizing: border-box;
+    margin-bottom: 44px;
+}
+.form-sign-text{
+    color: #636363;
+    font-size: 16px;
+}
+.form-sign-text a{
+    text-decoration: none;
+    color: #636363;
+}
+.right-image {
+   padding-top:  254px;
+    margin-left: 4px;
+    max-width: 100%;
+}
+.right-image img{
+    width: 100%;
+}
+
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    left: 0;
+    top: 0;
+}
+.popup {
+    background-color: #FFFFFB;;
+    position: fixed;
+    border: 1px solid #C6C6C4;
+    padding: 30px;
+    top: calc(50% - 150px); /*пол высоты его ф12*/
+    left: calc(50% - 150px); /*пол ширины его ф12*/
+    z-index: 999;
+    color: #323232;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 40px;
+}
+.popup-text{
+    font-size: 20px;
+}
+.popup-container .btn{
+    position: relative;
+    font-size: 18px;
+    width: 120px;
+    height: 50px;
+    margin: 0 auto;
+
+}
+.popup-container.opened{
+    display: flex;
+    align-items: center;
+}
+.popup-container.closed{
+    display: none;
+}
+/*
+.header .container {!*чтобы толлько для этого действовало*!
+    display: flex; !*чтобы логотипы, меню и корзина в строку все сложилось*!
+    align-items: center; !*выравнивание по центру по вертикали*!
+    justify-content: space-between; !*если равные отступы, Иначе только маргин лево и право*!
+}*/
