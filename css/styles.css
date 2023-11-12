@@ -206,3 +206,9 @@ body {
     align-items: center; !*выравнивание по центру по вертикали*!
     justify-content: space-between; !*если равные отступы, Иначе только маргин лево и право*!
 }*/
+.error-input {
+    color: red;
+    margin-bottom: 15px;
+    font-size: inherit;
+    display: none;
+}

@@ -1,73 +1,99 @@
 window.onload = function (e) {
     //валидация
-    let inputFullname = document.getElementById('form-fullname');
-    inputFullname.onkeydown = (e) => {
-        if (!isNaN(parseInt(e.key))) {
-            console.log("invalid symbol " + e.key);
-            return false;
-        }
-    };
-    let inputUsername = document.getElementById('form-username');
-    inputUsername.onkeydown = (e) => {
-        if (e.key == '.' || (e.key == ',')) {
-            console.log("invalid symbol " + e.key);
-            return false;
-        }
-    };
-
-    const checkbox = document.getElementById('form_choice');
-    checkbox.addEventListener('change', (event) => {
+    let inputFullName =  $('#form-fullname');
+    let inputUsername = $('#form-username');
+    let inputFormEmail = $('#form-email');
+    let inputFormPassword = $('#form-password');
+    let inputFormRepeatPswd = $('#form-repeat-pswd');
+    let checkbox = $('#form_choice');
+    /*checkbox.addEventListener('change', (event) => {
         if (event.currentTarget.checked) {
             console.log("Согласен");
         } else {
             console.log("Не согласен");
         }
-    });
-    let TextFormSign = document.getElementById('form-sign-btn');
-    let inputFormPassword = document.getElementById('form-password');
-    // console.log(TextFormSign"+);
-    console.log(TextFormSign.innerHTML);
-    let inputFormEmail = document.getElementById('form-email');
-    let inputFormRepeatPswd = document.getElementById('form-repeat-pswd');
+    });*/
+   // let TextFormSign = document.getElementById('form-sign-btn');
+
+
+
+
 
     const signButton = document.getElementById('form-sign-btn');
     const signLink = document.getElementById('userHaveAccount');
 
     signButton.onclick = onRegister;
     signLink.onclick = goToLoginPage;
+    function onErrorField(name) {
+        hasError = true;
+        name.css('border-color', 'red');
+        name.next().next().show();
+    }
+    function onEmptyField(name) {
+        hasError = true;
+        name.css('border-color', 'red');
+        name.next().show();
+    }
     function onRegister() {
         //валидация
+        let hasError = false;
+        $('.error-input').hide();
+        $('.form-input').css('border-color', '#C6C6C4');
 
-        if (!inputFullname.value) {
-            alert('Заполните поле Full name');
+        //Full Name может содержать только буквы и пробел
+        if (!inputFullName.val()) {
+            onEmptyField(inputFullName);
             return;
         }
-        if (!inputUsername.value) {
-            alert('Заполните поле username');
+        if (!inputFullName.val().match(/^[a-zA-ZА-Яа-яЁё]+\s*$/)) {
+            onErrorField(inputFullName);
             return;
         }
-        if (!inputFormEmail.value) {
-            alert('Заполните поле E-mail');
+        //Your username - может содержать только буквы, цифры, символ подчеркивания и тире
+         if (!inputUsername.val()) {
+             onEmptyField(inputUsername);
+             return;
+         }
+        // if (!inputUsername.val().match(/^[a-zA-ZА-Яа-яЁё\-_]+\s*$/)) {
+        if (!inputUsername.val().match(/^[А-Яа-яЁё\w-]+\s*$/)) {
+            onErrorField(inputUsername);
             return;
         }
-        if (!inputFormPassword.value) {
-            alert('Заполните поле password');
+        //4. Реализовать проверку введенного E-mail на корректность
+               if (!inputFormEmail.val()) {
+                   onEmptyField(inputFormEmail);
+                   return;
+        }
+               if (!inputFormEmail.val().match(/^(?=.{1,30}$)[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
+                   onErrorField(inputFormEmail);
+                   return;
+        }
+        //5. Поле пароля должно содержать минимум 8 символов, среди которых есть:
+        //     - хотя бы одна буква в верхнем регистре
+        //- хотя бы одна цифра
+        //- хотя бы один спецсимвол
+        //6. Password и Repeat Password должны совпадать
+
+        if (!inputFormPassword.val()) {
+            onEmptyField(inputFormPassword);
             return;
         }
-        if (!inputFormRepeatPswd.value) {
-            alert('Повторите пароль');
+        if (!inputFormPassword.val().match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s]).{6,}/)) {
+            onErrorField(inputFormPassword);
             return;
         }
-        if (inputFormRepeatPswd.value != inputFormPassword.value) {
-            alert('Пароли не совпадают');
-            return;
+                if (!inputFormRepeatPswd.val()) {
+                    onEmptyField(inputFormRepeatPswd);
+                    return;
         }
-        if (inputFormPassword.value.length < 8) {
-            alert('Пароль должен содержать не менее 8 символов.');
-            return;
+
+                if (inputFormRepeatPswd.val() != inputFormPassword.val()) {
+                    onErrorField(inputFormRepeatPswd);
+                    return;
         }
+//7. Пользователь должен согласиться с условиями
         if (!checkbox.checked) {
-            alert("Ошибка, вы должны принять соглашение");
+            onErrorField(checkbox);
             return;
         }
 
@@ -82,7 +108,7 @@ window.onload = function (e) {
     }
 
     function goToLoginPage() {
-        inputFullname.value = '';
+        inputFullName.value = '';
         inputUsername.value = '';
         inputFormEmail.value = '';
         inputFormPassword.value = '';
@@ -118,6 +144,10 @@ window.onload = function (e) {
         }
         if (!inputFormPassword.value) {
             alert('Заполните поле password');
+            return;
+        }
+        if (inputFormPassword.value.length < 8) {
+            alert('Пароль должен содержать не менее 8 символов.');
             return;
         }
         alert("Добро пожаловать, " + inputUsername.value + "!");

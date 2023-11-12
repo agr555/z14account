@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/adaptive.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/scripts/jquery-3.7.1.min.js"></script>
     <title>HomeWorks</title>
 </head>
 <body>
@@ -22,28 +23,40 @@
                         <div class="account-form-item" id = "userFullName">
                             <div class="form-placeholer-text">Full Name</div>
                             <input type="text" class="form-input" id="form-fullname">
+                            <div class="error-input">Please enter your fullname</div>
+                            <div class="error-input">Fullname may contain letter and space</div>
 <!--                            <input type="text" class="form-input" id="form-fullname" value="Antony Swarowski">-->
                         </div>
                         <div class="account-form-item">
                             <div class="form-placeholer-text">Your username</div>
                             <input type="text" class="form-input" id="form-username">
+                            <div class="error-input">Please enter your username</div>
+                            <div class="error-input">Username may contain only letters, digits, underscores (_) and dashes (-)</div>
                         </div>
                         <div class="account-form-item" id="userEmail">
                             <div class="form-placeholer-text">E-mail</div>
-                            <input type="email" class="form-input" id="form-email" pattern="^[A-Za-z0- 9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$"  size="30" required>
+<!--                            <input type="email" class="form-input" id="form-email" pattern="^[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$"  size="30" required>-->
+                            <input type="email" class="form-input" id="form-email">
+                            <div class="error-input">Please enter your email</div>
+                            <div class="error-input">Please enter a correct email </div>
                         </div>
                         <div class="account-form-item">
                             <div class="form-placeholer-text">Password</div>
                             <input type="password" class="form-input" id="form-password" >
+                            <div class="error-input">Please enter your password</div>
+                            <div class="error-input">Password must be at least 8 characters and have at least 1: uppercase letter, digit, 1 special character</div>
                         </div>
                         <div class="account-form-item" id="userRepeatPswd">
                             <div class="form-placeholer-text">Repeat Password</div>
                             <input type="password" class="form-input" id="form-repeat-pswd" >
+                            <div class="error-input">Please repeat your password</div>
+                            <div class="error-input">Passwords do not match</div>
                         </div>
                         <div class="form-checkbox" id="UserAgree">
 <!--                            <input type="checkbox" name="form_choice" id="form_choice" checked value="true" />-->
                             <input type="checkbox" name="form_choice" id="form_choice"  value="true" />
                             <label for="form_choice">Agree to our Terms of Service and Privacy Statement</label>
+                            <div class="error-input">You can read a ...</div>
                         </div>
                         <div class="form-sign">
                             <button class="btn" type="submit" id="form-sign-btn">Sign Up</button>
@@ -71,7 +84,9 @@
         </div>
     </div>
 </main>
+<!--<script src="/scripts/jquery-3.7.1.min.js">-->
 <script src="/scripts/script.js">
+
 
 </script>
 </body>
