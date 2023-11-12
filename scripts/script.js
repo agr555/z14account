@@ -1,32 +1,30 @@
 window.onload = function (e) {
     //валидация
-    let inputFullName =  $('#form-fullname');
+    let inputFullName =  $('#form-fullName');
     let inputUsername = $('#form-username');
     let inputFormEmail = $('#form-email');
     let inputFormPassword = $('#form-password');
     let inputFormRepeatPswd = $('#form-repeat-pswd');
-    let checkbox = $('#form_choice');
-    /*checkbox.addEventListener('change', (event) => {
+    let checkbox = document.getElementById('form_choice');
+ /*   checkbox.addEventListener('change', (event) => {
         if (event.currentTarget.checked) {
             console.log("Согласен");
         } else {
             console.log("Не согласен");
+
         }
     });*/
-   // let TextFormSign = document.getElementById('form-sign-btn');
-
-
-
 
 
     const signButton = document.getElementById('form-sign-btn');
-    const signLink = document.getElementById('userHaveAccount');
+    const signLink =  document.getElementById('userHaveAccount');
 
     signButton.onclick = onRegister;
     signLink.onclick = goToLoginPage;
     function onErrorField(name) {
         hasError = true;
         name.css('border-color', 'red');
+        name.css('color' , 'red');
         name.next().next().show();
     }
     function onEmptyField(name) {
@@ -39,7 +37,7 @@ window.onload = function (e) {
         let hasError = false;
         $('.error-input').hide();
         $('.form-input').css('border-color', '#C6C6C4');
-
+       console.log('onRegister');
         //Full Name может содержать только буквы и пробел
         if (!inputFullName.val()) {
             onEmptyField(inputFullName);
@@ -69,9 +67,7 @@ window.onload = function (e) {
                    return;
         }
         //5. Поле пароля должно содержать минимум 8 символов, среди которых есть:
-        //     - хотя бы одна буква в верхнем регистре
-        //- хотя бы одна цифра
-        //- хотя бы один спецсимвол
+        //     хотя бы 1:  буква в верхнем регистре, цифра, спецсимвол
         //6. Password и Repeat Password должны совпадать
 
         if (!inputFormPassword.val()) {
@@ -94,8 +90,11 @@ window.onload = function (e) {
 //7. Пользователь должен согласиться с условиями
         if (!checkbox.checked) {
             onErrorField(checkbox);
+            console.log(checkbox);
+
             return;
         }
+        console.log(checkbox.value);
 
         let popupShow = document.getElementById('popup-show');
         let popupBtn = document.getElementById('popup-btn');
@@ -113,45 +112,51 @@ window.onload = function (e) {
         inputFormEmail.value = '';
         inputFormPassword.value = '';
         inputFormRepeatPswd.value = '';
+
         let TextAccountTitle = document.getElementById('account-title');
         TextAccountTitle.innerHTML = 'Log in to the system';
-        TextFormSign.innerHTML = 'Sign In';
+        let TextFormSign = $('#form-sign-btn');
+        TextFormSign.html('Sign In');
+        let userHaveAccount = $('#userHaveAccount');
+        let linkText = $('#link-text');
 
-        /*        document.getElementsByClassName("account-form-item")[0].style.display = "none";
-                document.getElementsByClassName("account-form-item")[2].style.display = "none";
-                document.getElementsByClassName("account-form-item")[4].style.display = "none";
-                document.getElementsByClassName("form-checkbox")[0].style.display = "none";
-                document.getElementsByClassName("form-sign-text")[0].style.display = "none";*/
+            linkText.html("Registration");
 
-        let userFullName = document.querySelector('#userFullName');
-        let userEmail = document.querySelector('#userEmail');
-        let userRepeatPswd = document.querySelector('#userRepeatPswd');
-        let userHaveAccount = document.querySelector('#userHaveAccount');
-        let userAgree = document.querySelector('#UserAgree');
+        let userFullName =  $('#userFullName');
+        let userEmail = $('#userEmail');
+        let userRepeatPswd = $('#userRepeatPswd');
+        // let userHaveAccount = $('#userHaveAccount');
+        let userAgree =  $('#UserAgree');
+
         userFullName.remove();
         userEmail.remove();
         userRepeatPswd.remove();
         userAgree.remove();
-        userHaveAccount.remove();
 
         signButton.onclick = onLogin;
+        if ( TextAccountTitle.innerHTML == 'Log in to the system')
+        {   console.log (TextAccountTitle.innerHTML);
+           // signLink.onclick = location.reload();
+           signLink.onclick = onRegister;
+           //window.onload;
+           //  location.reload();
+            signLink.addEventListener('click', () => window.location.reload());
+            }
     }
 
     function onLogin() {
-        if (!inputUsername.value) {
-            alert('Заполните поле username');
+        if (!inputUsername.val()) {
+            onEmptyField(inputUsername);
             return;
         }
-        if (!inputFormPassword.value) {
-            alert('Заполните поле password');
+        if (!inputFormPassword.val()) {
+            onEmptyField(inputFormPassword);
             return;
         }
-        if (inputFormPassword.value.length < 8) {
-            alert('Пароль должен содержать не менее 8 символов.');
-            return;
-        }
-        alert("Добро пожаловать, " + inputUsername.value + "!");
+        alert("Добро пожаловать, " + inputUsername.val() + "!");
     }
 }
-
+$(document).on('submit', 'form', function(e) {
+    e.preventDefault(); // или же return false
+});
 
