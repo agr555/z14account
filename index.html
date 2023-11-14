@@ -27,11 +27,12 @@
                             <div class="error-input">fullName may contain letter and space</div>
 <!--                            <input type="text" class="form-input" id="form-fullName" value="Antony Swarowski">-->
                         </div>
-                        <div class="account-form-item">
+                        <div class="account-form-item" id="userName" >
                             <div class="form-placeholder-text">Your username</div>
                             <input type="text" class="form-input" id="form-username" placeholder="" required>
                             <div class="error-input">Please enter your username</div>
                             <div class="error-input">Username may contain only letters, digits, underscores (_) and dashes (-)</div>
+                            <div class="error-input">Такой пользователь не зарегистрирован</div>
                         </div>
                         <div class="account-form-item" id="userEmail"  >
                             <div class="form-placeholder-text">E-mail</div>
@@ -39,12 +40,14 @@
                             <input type="email" class="form-input" id="form-email">
                             <div class="error-input">Please enter your email</div>
                             <div class="error-input">Please enter a correct email </div>
+                            <div class="error-input">Неверный пароль</div>
                         </div>
-                        <div class="account-form-item">
+                        <div class="account-form-item" id="userPswd">
                             <div class="form-placeholder-text">Password</div>
                             <input type="password" class="form-input" id="form-password" placeholder="" required>
                             <div class="error-input">Please enter your password</div>
                             <div class="error-input">Password must be at least 8 characters and have at least 1: uppercase letter, digit, 1 special character</div>
+                            <div class="error-input">Неверный пароль</div>
                         </div>
                         <div class="account-form-item" id="userRepeatPswd"  >
                             <div class="form-placeholder-text">Repeat Password</div>
@@ -52,11 +55,10 @@
                             <div class="error-input">Please repeat your password</div>
                             <div class="error-input">Passwords do not match</div>
                         </div>
-                        <div class="form-checkbox" id="UserAgree" >
-<!--                            <input type="checkbox" name="form_choice" id="form_choice" checked value="true" />-->
+
+                        <div class="account-form-item form-checkbox" id="UserAgree" >
                             <input type="checkbox" name="form_choice" id="form_choice"  value="true" />
                             <label  id="form_choice_label" for="form_choice">Agree to our Terms of Service and Privacy Statement</label>
-
                             <div class="error-input">You can agree to our Terms.</div>
                             <div class="error-input">You can agree to our Terms.</div>
                         </div>
@@ -87,9 +89,23 @@
             <button class="btn popup-btn" type="submit" id="popup-btn">Ok</button>
         </div>
     </div>
+
+  <!--  <div class="cookie">
+        <div class="cookie-title">
+            <div>Мы используем файлы cookie</div>
+            <span class="cookie-accept">&times;</span>
+        </div>
+        <div class="cookie-text">Для корректной работы сайта мы используем файлы cookie</div>
+        <div class="cookie-button">
+            <button class="btn cookie-accept">Принять</button>
+        </div>
+    </div>-->
+
 </main>
 <!--<script src="/scripts/jquery-3.7.1.min.js">-->
+<!--<script src="/scripts/cookie.js">-->
 <script src="/scripts/script.js">
+
 
 
 </script>
