@@ -19,17 +19,16 @@ $(() => {
             userAgree: $('#UserAgree'),
             accountText: $('.account-text'),
             formPlaceholderText: $('.form-placeholder-text'),
-            checkbox1 : $('#form_choice'),
-            signButton : $('#form-sign-btn'),
-            signLink : $('#userHaveAccount')
+
         },
     };
-    //let checkbox1 = document.getElementById('form_choice');
-    //const signButton = document.getElementById('form-sign-btn');
-    //const signLink = document.getElementById('userHaveAccount');
+    let checkbox1 = document.getElementById('form_choice');
+    const signButton = document.getElementById('form-sign-btn');
+    const signLink = document.getElementById('userHaveAccount');
 
-    elements.inputs.signButton.onclick = onRegister;
-    elements.inputs.signLink.onclick = goToLoginPage;
+    signButton.onclick = onRegister;
+    signLink.onclick = goToLoginPage;
+
     function onRegister() {
         $('.error-input').hide();
         $('.form-input').css('border-color', '#C6C6C4').css('color', '#323232');
@@ -96,28 +95,34 @@ $(() => {
             goToLoginPage();
         });
     }
+
     function onWriteLocalStorage(user) {
         let clients = JSON.parse(localStorage.getItem(CLIENTS_LS_KEY)) || [];
         clients.push(user);
         localStorage.setItem(CLIENTS_LS_KEY, JSON.stringify(clients));
     }
+
     function onErrorField(name) {
         name.css('border-color', 'red');
         name.css('color', 'red');
         name.next().next().show();
     }
+
     function onErrorLogin(name) {
         name.css('border-color', 'red');
         name.css('color', 'red');
         name.next().next().next().show();
     }
+
     function onEmptyField(name) {
         name.css('border-color', 'red');
         name.next().show();
     }
+
     function onUnChecked(name) {
         name.next().next().show();
     }
+
     function goToLoginPage() {
         elements.inputs.fullName.value = '';
         elements.inputs.username.value = '';
@@ -134,12 +139,13 @@ $(() => {
         elements.inputs.formRepeatPswd.remove();
         elements.inputs.repeatPswdText.remove();
         elements.inputs.userAgree.remove();
-        elements.inputs.signButton.onclick = onLogin;
+        signButton.onclick = onLogin;
         if (elements.inputs.textAccountTitle[0].innerHTML === 'Log in to the system') {
-             elements.inputs.signLink.onclick = onRegister;
-             elements.inputs.signLink.addEventListener('click', () => window.location.reload());
+            signLink.onclick = onRegister;
+            signLink.addEventListener('click', () => window.location.reload());
         }
     }
+
     function onLogin() {
         $('.error-input').hide();
         $('.form-input').css('border-color', '#C6C6C4').css('color', '#323232');
@@ -154,8 +160,8 @@ $(() => {
         }
         let clients = JSON.parse(localStorage.getItem("clients")) || [];
         let userFind = '';
-        const client  = clients.find( client => client.userName === elements.inputs.username.val());
-        console.log (client);
+        const client = clients.find(client => client.userName === elements.inputs.username.val());
+        console.log(client);
         try {
             clients.forEach((item) => {
                 if (item.userName === elements.inputs.username.val()) {
@@ -179,6 +185,7 @@ $(() => {
             onErrorLogin(elements.inputs.username);
         }
     }
+
     function onAccount(userFind) {
         elements.inputs.formPlaceholderText.remove();
         elements.inputs.username.value = '';
@@ -192,7 +199,7 @@ $(() => {
         elements.inputs.formPassword.remove();
         elements.inputs.linkText.remove();
         elements.inputs.accountText.remove();
-        elements.inputs.signButton.addEventListener('click', () => window.location.reload());
+        signButton.addEventListener('click', () => window.location.reload());
     }
 });
 $(document).on('submit', 'form', function (e) {
