@@ -159,30 +159,25 @@ $(() => {
             return;
         }
         let clients = JSON.parse(localStorage.getItem("clients")) || [];
-        let userFind = '';
         const client = clients.find(client => client.userName === elements.inputs.username.val());
         console.log(client);
         try {
-            clients.forEach((item) => {
-                if (item.userName === elements.inputs.username.val()) {
-                    userFind = item.fullName;
-                    if (item.pswd !== elements.inputs.formPassword.val()) {
-                        console.log("Неверный пароль");
-                        onErrorLogin(elements.inputs.formPassword);
-                    } else {
-                        console.log("Добро пожаловать, " + item.fullName + "!");
-                        onAccount(userFind);
-                    }  // break in try-catch;
-                }
-            });
+            if (client) {
+                if (client.pswd !== elements.inputs.formPassword.val()) {
+                    console.log("Неверный пароль");
+                    onErrorLogin(elements.inputs.formPassword);
+                } else {
+                    console.log("Добро пожаловать, " + client.fullName + "!");
+                    onAccount(client.fullName);
+                }  // break in try-catch;
+            } else {
+                console.log('Такой пользователь не зарегистрирован');
+                onErrorLogin(elements.inputs.username);
+            }
         } catch (e) {
             if (e.message !== 'catch value found') {
                 throw e;
             }
-        }
-        if (userFind === '') {
-            console.log('Такой пользователь не зарегистрирован');
-            onErrorLogin(elements.inputs.username);
         }
     }
 
